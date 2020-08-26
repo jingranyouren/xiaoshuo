@@ -3,3 +3,5 @@
 	使用springboot用于后台开发。<br/>
 	使用微信原生框架mina作为前端技术开发。<br/>
 	未做小说的后台管理系统<br/>
+3.效果预览<br/>
+![image](https://github.com/jingranyouren/img/blob/master/index.png)
