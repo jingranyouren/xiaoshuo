@@ -1,0 +1,14 @@
+<!--Compoments/list/list.wxml-->
+<view wx:for="{{list}}" wx:key="bookId" class="ul">
+    <view class="li" data-bookId="{{item.bookId}}" bind:tap="selectedItem">
+        <view class="left"><image src="{{item.bookImg}}" mode="widthFix" /></view>
+        <view class="right">
+            <view class="bookName">{{item.bookName}}</view>
+            <view class="intro">{{item.intro}}</view>
+            <view class="tabs">
+                    <view wx:for="{{item.tabs}}" wx:key="styleId" wx:for-item="tab" wx:for-index="i">{{tab.styleName}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+

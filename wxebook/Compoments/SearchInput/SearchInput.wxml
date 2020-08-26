@@ -1,0 +1,4 @@
+<view class="search_input">
+    <navigator url="../../pages/search/search" open-type="navigate">请输入书名搜索</navigator>
+</view>
+

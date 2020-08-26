@@ -1,0 +1,24 @@
+<!--pages/book/book.wxml-->
+<Tabs tabs="{{bookShell}}" bind:itemChange="handerItemChange">
+<block>
+   <view class="data">
+            <view class="data_list" wx:for="{{contentData}}"
+            wx:key="bookId">
+                <navigator url="/pages/reader/reader?bookId={{item.bookId}}">
+                  <image mode="widthFix" src="{{item.bookImg}}"/>
+                </navigator>
+                <view class="book_name">
+                    <text >{{item.bookName}}</text>
+                </view>
+            </view>
+            <view class="data_list">
+                <navigator url="{{add_book.path}}" open-type="switchTab">
+                  <image mode="widthFix" src="{{add_book.url}}"/>
+                </navigator>
+                <view class="book_name">
+                    <text ></text>
+                </view>
+            </view>
+   </view>
+</block>
+</Tabs>

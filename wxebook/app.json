@@ -1,0 +1,58 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/book/book",
+    "pages/add/add",  
+    "pages/mine/mine",
+    "pages/search/search",
+    "pages/bookinfo/bookinfo",
+    "pages/category/category",
+    "pages/free/free",
+    "pages/finally/finally",
+    "pages/activity/activity",
+    "pages/more/more", 
+    "pages/reader/reader"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ytj小说",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": { 
+    "color": "#999",
+    "selectedColor": "#3588fe",
+    "backgroundColor": "",
+    "position": "bottom",
+    "borderStyle": "black", 
+    "list": [
+      {
+        "pagePath": "pages/index/index", 
+        "text": "首页", 
+        "iconPath": "./icon/index.jpg",
+        "selectedIconPath": "./icon/_index.jpg"
+      },
+      {
+        "pagePath": "pages/book/book",
+        "text": "书架",
+        "iconPath": "./icon/book.jpg",
+        "selectedIconPath": "./icon/_book.jpg"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "充值",
+        "iconPath": "./icon/add.jpg",
+        "selectedIconPath": "./icon/_add.jpg"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./icon/mine.jpg",
+        "selectedIconPath": "./icon/_mine.jpg"
+      } 
+    ]
+  },
+  
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.AddBookshellDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.AddBookshellEntity" >
+                <result column="user_id" property="userId" />
+                <result column="book_id" property="bookId" />
+                <result column="add_time" property="addTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                user_id,
+                book_id,
+                add_time
+    </sql>
+	
+	<select id="selectBookShellByUserId" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from add_bookshell
+		where user_id = #{userId}
+		order by add_time desc
+		<if test="limit > 0">
+			limit #{limit}
+		</if>
+	</select>
+	
+    <insert id="insertSelective" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.logytj.ebook.entity.AddBookshellEntity">
+        INSERT INTO add_bookshell
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                        <if test ='null != userId'>
+                        user_id,
+                        </if>
+                        <if test ='null != bookId'>
+                        book_id,
+                        </if>
+                        <if test ='null != addTime'>
+                        add_time
+                        </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                        <if test ='null != userId'>
+                        #{userId},
+                        </if>
+                        <if test ='null != bookId'>
+                        #{bookId},
+                        </if>
+                        <if test ='null != addTime'>
+                        #{addTime}
+                        </if>
+        </trim>
+    </insert>
+
+	<select id="selectAddBookshellByPrimaryKey" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from add_bookshell
+			where user_id = #{userId} and book_id = #{bookId} 
+	</select>
+
+	<delete id="deleteShellByprimaryKey" >
+		delete from add_bookshell where user_id = #{userId} and book_id = #{bookId}
+	</delete>
+</mapper>

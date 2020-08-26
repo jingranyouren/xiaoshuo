@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "list":"../../Compoments/list/list"
+  },
+  "navigationBarTitleText": "完本"
+}

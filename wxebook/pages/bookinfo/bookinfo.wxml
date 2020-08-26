@@ -1,0 +1,50 @@
+<view class="body">
+    <view class="top">
+        <image mode="aspectFill" src="{{bookInfo.bookImg}}"/>
+        <view class="book">
+            <view class="bookName">
+                {{bookInfo.bookName}}
+            </view>
+            <view class="writer">
+                作者：{{bookInfo.author}}
+            </view>
+            <view class="book_mid">
+                <view class="status">
+                    {{bookInfo.status}}
+                </view>
+                <view  class="word_num">
+                    {{bookInfo.wordNum}}万字
+                </view>
+            </view>
+            <view class="book_bottom">
+               <view class="tab" wx:for="{{bookInfo.tabs}}" wx:key="styleId">
+                    {{item.styleName}}
+               </view>
+            </view>
+        </view>
+    </view>
+    <view class="intro">{{bookInfo.intro}}</view>
+    <view class="midden">
+        <view class="mulv">
+            <view class="left">目录</view>
+            <view class="right"><navigator >共{{bookInfo.count}}章></navigator></view>
+        </view>
+        <view class="new">{{bookInfo.lastCName}}</view>
+        <view class="first">{{bookInfo.firstCName}}</view>
+    </view>
+    <view class="midden">
+        <view class="mulv">
+            <view class="left">精彩书评</view>
+            <view class="right"><navigator >我要评论</navigator></view>
+        </view>
+        <view class="user" wx:for="{{bookInfo.disList}}" wx:key="discussTime">
+            <view class="user_top"><view class="header_img"><image mode="aspectFill" src="{{item.user.avatarUrl}}"/></view><view class="user_name">{{item.user.nickName}}</view> <view class="ass"><icon  />{{item.agreen}}</view></view>
+            <view class="content">{{item.content}}</view>
+            <view class="time">{{item.discussTime}}</view>
+        </view>
+    </view>
+    <view class="bottom">
+        <view hidden="{{bookInfo.isInShell}}" bind:tap="addShell">加入书架</view> <view hidden="{{!bookInfo.isInShell}}" bind:tap="removeShell">已在书架</view>
+        <view class="read" bind:tap="readerBook">开始阅读</view>
+    </view>
+</view>

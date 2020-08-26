@@ -1,0 +1,2 @@
+<!--pages/finally/finally.wxml-->
+<list list="{{list}}" bind:handerItemSelected="handerItemSelected"></list>

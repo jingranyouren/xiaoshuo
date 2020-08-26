@@ -1,0 +1,2 @@
+<!--pages/free/free.wxml-->
+<list list="{{list}}" bind:handerItemSelected="handerItemSelected"></list>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Tabs":"../../Compoments/Tabs/Tabs"
+  },
+  "navigationBarTitleText": "书架"
+}

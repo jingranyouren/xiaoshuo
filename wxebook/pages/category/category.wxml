@@ -1,0 +1,21 @@
+<!--pages/category/category.wxml-->
+<!-- <view class="body">
+    <block wx:for="{{arr}}" wx:key="id">
+        <view class="right {{item.is_active == true ? 'active':''}}">{{item.name}}</view>
+    </block>
+</view> -->
+<SearchInput></SearchInput>
+<category arr="{{arr}}" bind:selectCategory="selectCategory" data-root="1">
+    <block>
+        <category arr="{{catls}}" bind:selectCategory="selectCategory" data-root="2">
+            <block>
+                <category arr="{{status}}" bind:selectCategory="selectCategory">
+                    <block>
+                        <list list="{{list}}" bind:handerItemSelected="handerItemSelected"></list>
+                    </block>
+                </category>
+            </block>
+        </category>
+    </block>
+</category>
+

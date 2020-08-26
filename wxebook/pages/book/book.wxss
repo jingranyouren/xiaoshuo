@@ -1,0 +1,28 @@
+/* pages/book/book.wxss */
+.data{
+    width: auto;
+}
+.data .data_list{
+    padding: 10rpx;
+    list-style: none; 
+    width:33%; 
+    height:auto;
+    display:inline-block
+}
+
+.data navigator{
+    width: 100%;
+}
+
+.data navigator image{
+     width: 100%;
+}
+.data .book_name{
+    width: 100%;
+    text-align: center;
+}
+.data .book_name text{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20rpx;
+}

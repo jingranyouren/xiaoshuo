@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.UserDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.UserEntity" >
+                <result column="user_id" property="userId" />
+                <result column="nick_name" property="nickName" />
+                <result column="header_img" property="avatarUrl" />
+                <result column="sex" property="sex" />
+                <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                user_id,
+                nick_name,
+                header_img,
+                sex,
+                create_time
+    </sql>
+	<insert id="insertUser" parameterType="com.logytj.ebook.entity.UserEntity" useGeneratedKeys="true" keyColumn="user_id" keyProperty="userId">
+		insert into tb_logytj_xiaoshuo_user(nick_name,header_img,sex,create_time)
+		values(#{nickName},#{avatarUrl},#{sex},now());
+	</insert>
+	
+	<insert id="insertUserSelective" parameterType="com.logytj.ebook.entity.UserEntity" >
+		insert into tb_logytj_xiaoshuo_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">user_id,</if>
+			<if test="nickName != null and userName != ''">nick_name,</if>
+			<if test="avatarUrl != null and avatarUrl != null">header_img,</if>
+			<if test="sex == '男'  or sex == '女'">sex,</if>
+			<if test="createTime != null">create_time,</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">#{userId},</if>
+			<if test="nickName != null and userName != ''">#{nickName},</if>
+			<if test="avatarUrl != null and avatarUrl != null">#{avatarUrl},</if>
+			<if test="sex == '男'  or sex == '女'">#{sex},</if>
+			<if test="createTime != null">#{createTime},</if>
+		</trim>
+	</insert>
+	
+	<select id="selectUserByNickName" parameterType="string" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+			from tb_logytj_xiaoshuo_user
+				where nick_name = #{nickName} 
+	</select>
+	
+	<resultMap id="userMap" type="com.logytj.ebook.vo.User" >
+                <result column="nick_name" property="nickName" />
+                <result column="header_img" property="avatarUrl" />
+    </resultMap>
+	<select id="selectUserByPrimaryKey" parameterType="int" resultMap="userMap">
+		select nick_name,header_img from tb_logytj_xiaoshuo_user where user_id = #{userId}
+	</select>
+</mapper>

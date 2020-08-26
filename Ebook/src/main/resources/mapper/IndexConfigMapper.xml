@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.IndexConfigDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.IndexConfigEntity" >
+                <id column="config_id" property="configId" />
+                <result column="book_id" property="bookId" />
+                <result column="config_sex" property="configSex" />
+                <result column="config_type" property="configType" />
+                <result column="rank" property="rank" />
+                <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                config_id,
+                book_id,
+                config_sex,
+                config_type,
+                rank,
+                is_deleted
+    </sql>
+
+	<select id="selectIndexConfigByTypeAndSex" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+			from  tb_logytj_xiaoshuo_index_config 
+				where  config_type = #{configType} and config_sex = #{sex}
+				order by rank asc
+			<if test="limit > 0">
+				limit #{limit}
+			</if>
+	</select>
+</mapper>

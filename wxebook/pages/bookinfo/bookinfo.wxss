@@ -1,0 +1,146 @@
+/* pages/bookinfo/bookinfo.wxss */
+.body{
+    background-color: var(--themeColor);
+    padding-bottom: 90rpx;
+}
+.body .top{
+    width: 100%;
+    height: 180rpx;
+}
+
+.body .top image{
+    padding: 10rpx;
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+.body .top .book{
+    float:right;
+    width: 80%;
+    height: 100%;
+}
+.body .top .book .bookName{
+    padding-left: 10rpx;
+    font-size: 50rpx;
+    width: 100%;
+    height: 40%;
+}
+.body .top .book .writer{
+    color: blue;
+    width: 100%;
+    height: 20%;
+    padding-left: 10rpx;
+}
+.body .top .book .book_mid{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    padding-left: 10rpx;
+}
+.body .top .book .book_mid .status{
+    border-right: 1rpx solid rgba(148, 143, 143, 0.37);
+    height: 100%;
+}
+.body .top .book .book_mid .word_num{
+    padding-left: 20rpx;
+    height: 100%;
+}
+.body .top .book .book_bottom{
+    display: flex;
+    height: 20%;
+    width: auto;
+}
+.body .top .book .book_bottom .tab{
+    background-color: yellowgreen;
+    list-style: none; 
+    width:21%; 
+    height:auto;
+    display:inline-block;
+    border-radius:40rpx;
+    margin-left: 10rpx;
+    text-align: center;
+}
+.body .midden{
+    padding-top: 10rpx;
+    width: 100%;
+}
+.body .midden .mulv{
+    width: 100%;
+    height: 90rpx;
+    display: flex;
+}
+.body .midden .mulv .left{
+    flex: 1;
+    padding-left: 20rpx;
+    padding-top: 7rpx;
+    font-size: 50rpx;
+    border-left: 5rpx solid blue;
+}
+.body .midden .mulv .right{
+    height: 100%;
+    justify-content:right;
+    align-items: center;
+}
+.body .midden  .new{
+    height: 70rpx;
+    color: blue;
+    border-top: 2rpx solid black;
+    padding: 14rpx;
+}
+.body .midden  .first{
+    height: 70rpx;
+    border-top: 2rpx solid black;
+    border-bottom: 2rpx solid black;
+    color:  rgba(148, 143, 143, 0.37);
+    padding: 14rpx;
+}
+.body .midden .mulv .right navigator{
+    height: 100%;
+    padding: 24rpx;
+    justify-content:right;
+    align-items: center;
+}
+.body .midden .user{
+    padding-top: 20rpx;  
+}
+.body .midden .user .user_top{
+    padding: 10rpx;
+    display: flex;
+    height: 70rpx;
+}
+.body .midden .user .user_top .header_img{
+    width: 55rpx;
+    height: 100%;
+}
+.body .midden .user .user_top .user_name{
+    width: 100%;
+    height: 100%;
+    padding-left: 30rpx;
+    padding-top: 10rpx;
+}
+.body .midden .user .user_top .header_img image{
+    width: 55rpx;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.body .bottom{
+    display: flex;
+    height: 90rpx;
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	display:flex;
+	justify-content:center;
+}
+.body .bottom view{
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 60rpx;
+}
+.body .bottom .read{
+    background-color: rgb(69, 145, 168);
+    color: white;
+}

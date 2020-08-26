@@ -1,0 +1,30 @@
+<view class="user_info_wrap" >
+    <view class="user_img_wrap" wx:if="{{hasInfo}}">
+        <image class="user_bg" src="{{userInfo.avatarUrl}}" />
+        <view class="user_info">
+            <image class="user_icon" src="{{userInfo.avatarUrl}}" />
+            <view class="user_name">{{userInfo.nickName}}</view>
+        </view>
+    </view>
+    <view class="login_btn" wx:else>
+        <button open-type="getUserInfo" bindgetuserinfo="handGetUserInfo">登录</button>
+    </view>
+</view>
+<view class="ul">
+<view class="li">
+    <navigator > 书币充值</navigator>
+    <text>></text>
+</view>
+<view class="li">
+    <navigator >阅读记录</navigator>
+    <text>></text>
+</view>
+<view class="li">
+    <navigator > 消费记录</navigator>
+    <text>></text>
+</view>
+<view class="li">
+    <navigator > 用户反馈</navigator>
+    <text>></text>
+</view>
+</view>

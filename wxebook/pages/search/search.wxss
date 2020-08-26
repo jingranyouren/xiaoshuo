@@ -1,0 +1,47 @@
+/* pages/search/search.wxss */
+page{
+    background-color: whitesmoke;
+}
+.top{
+    height: 90rpx;
+    padding-top: 10rpx;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    background-color:white;
+}
+
+.top input{
+    height: 100%;
+    border-radius:40rpx;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: aliceblue;
+}
+.dpyword{
+    margin-top: 10rpx;
+    background-color:white;
+    margin-bottom: 10rpx;
+}
+.dpytop{
+    height: auto;
+    width: 100%;
+    font-size: 40rpx;
+    color: rgb(48, 117, 245);
+    background-color:white;
+}
+.keyword{
+    padding: 5rpx;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    margin-top: 5rpx;
+    list-style: none; 
+    width:auto; 
+    height:auto;
+    background-color: whitesmoke;
+    border-radius: 50rpx;
+    border: 2rpx solid wheat;
+    display: inline-block;
+    text-align: center;
+    background-color: whitesmoke;
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.DiscussDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.DiscussEntity" >
+                <result column="user_id" property="userId" />
+                <result column="book_id" property="bookId" />
+                <result column="discuss_time" property="discussTime" />
+                <result column="content" property="content" />
+                <result column="agreen" property="agreen"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                user_id,
+                book_id,
+                discuss_time,
+                content,
+                agreen
+    </sql>
+    <resultMap id="DiscussVOMap" type="com.logytj.ebook.vo.DiscussVO" >
+                <result column="discuss_time" property="discussTime" />
+                <result column="content" property="content" />
+                <result column="agreen" property="agreen"/>
+                <association property="user" column="user_id" 
+                javaType="com.logytj.ebook.vo.User" fetchType="eager"
+                 select="com.logytj.ebook.dao.UserDao.selectUserByPrimaryKey"/>      
+    </resultMap>
+	<select id="selectDiscussByBookId" resultMap="DiscussVOMap">
+		select <include refid="Base_Column_List"/> from discuss where book_id = #{bookId}
+		order by agreen desc, discuss_time desc
+		<if test="limit > 0">
+			limit  #{limit}
+		</if>
+	</select>
+</mapper>

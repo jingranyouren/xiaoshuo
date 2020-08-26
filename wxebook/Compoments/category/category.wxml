@@ -1,0 +1,9 @@
+<!--Compoments/category/category.wxml-->
+<view class="body">
+    <block wx:for="{{arr}}" wx:key="id">
+        <view class="right {{item.is_active == true ? 'active':''}}" data-categoryId="{{item.id}}" bind:tap="handerChangeItem">{{item.name}}</view>
+    </block>
+</view>
+<view class="content">
+    <slot></slot>
+</view>

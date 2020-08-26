@@ -1,0 +1,30 @@
+/* pages/category/category.wxss */
+.body{
+    width: 100%;
+}
+.right:nth-child(1){
+    padding: 10rpx;
+    list-style: none; 
+    width:15%; 
+    height:auto;
+    text-align: center;
+}
+.right:nth-child(3n+5){
+    margin-left: 112.5rpx;
+    padding: 10rpx;
+    list-style: none; 
+    width:25%; 
+    height:auto;
+    text-align: center;
+}
+.right{
+    padding: 10rpx;
+    list-style: none; 
+    width:25%; 
+    height:auto;
+    display: inline-block;
+    text-align: center;
+}
+.active{
+    color:blue;
+}

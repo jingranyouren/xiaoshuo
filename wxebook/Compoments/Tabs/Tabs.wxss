@@ -1,0 +1,18 @@
+.tab_title{
+    display: flex; /*  伸缩盒子 */
+    padding: 10rpx;
+}
+.title_item{
+    flex: 1; /*沾一份**/
+    display: flex; /*伸缩盒子*/
+    justify-content: center; /*文字水平对齐*/
+    align-items: center; /*垂直对齐*/
+    font-size: 30rpx;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* active 选中效果*/
+.is_active{
+    color:blue;
+    border-bottom: 3rpx solid currentColor; /*下边框*/
+}

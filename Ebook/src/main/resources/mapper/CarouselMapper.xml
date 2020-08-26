@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.CarouselDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.CarouselEntity" >
+                <id column="carousel_id" property="carouselId"/>
+                <result column="book_id" property="bookId" />
+                <result column="carousel_img" property="carouselImg" />
+                <result column="carousel_sex" property="carouselSex" />
+                <result column="rank" property="rank" />
+                <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    			carousel_id,
+                book_id,
+                carousel_img,
+                carousel_sex,
+                rank,
+                is_deleted
+    </sql>
+    
+    <select id="selectCarouselBySex"  resultMap="BaseResultMap">
+    	select <include refid="Base_Column_List"/>
+    		from tb_logytj_xiaoshuo_carousel
+    			where carousel_sex = #{sex}
+    				order by rank asc
+    	<if test="limit > 0">
+    	 	limit #{limit}
+    	</if>
+    </select>
+</mapper>

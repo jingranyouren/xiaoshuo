@@ -1,0 +1,11 @@
+<!--pages/search/search.wxml-->
+<view class="top">
+    <input style="text" placeholder="请输入书名搜索" value="{{keyword}}" bindblur="getValue"/>
+</view>
+<view class="dpyword">
+    <view class="dpytop">搜索历史</view>
+    <block wx:for="{{history}}" wx:key="name" >
+        <view class="keyword" data-keyword="{{item.keyword}}" bind:tap="setKeyword">{{item.keyword}}</view>
+    </block>
+</view>
+<list list="{{list}}" bind:handerItemSelected="handerItemSelected"></list>

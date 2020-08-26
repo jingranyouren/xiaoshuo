@@ -1,0 +1,67 @@
+.tabs{
+    width: 100%;
+    height: 30rpx;
+}
+.carousel swiper{
+    width: 100%;
+    height: calc(375 * 100vw / 1080);
+}
+.carousel swiper swiper-item navigator image{
+    width: 100%;
+}
+
+.nav{
+    display: flex;
+}
+.nav navigator{
+    flex: 1;
+    padding-top: 20rpx;
+}
+.nav navigator image{
+    width: 100%;
+}
+
+.content .title{
+    display: flex;
+}
+.content .title .title_name{
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+    font-size: 45rpx;
+    justify-content: center;
+    align-content: center;
+}
+.content .title navigator{
+    position: absolute;
+    right: 0px;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+}
+
+.content .data{
+    width: auto;
+}
+.content .data .data_list{
+    padding: 10rpx;
+    list-style: none; 
+    width:33%; 
+    height:auto;
+    display:inline-block
+}
+
+.content .data navigator{
+    width: 100%;
+}
+
+.content .data navigator image{
+     width: 100%;
+}
+.content .data .book_name{
+    width: 100%;
+    text-align: center;
+}
+.content .data .book_name text{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20rpx;
+}

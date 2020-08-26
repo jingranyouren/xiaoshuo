@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.RootCategoryDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.RootCategoryEntity" >
+                <result column="root_id" property="rootId" />
+                <result column="root_sex" property="rootSex" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                root_id,
+                root_sex
+    </sql>
+	
+	<select id="selectRootCategory" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from tb_logytj_xiaoshuo_root_category
+	</select>
+	
+</mapper>

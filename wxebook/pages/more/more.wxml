@@ -1,0 +1,2 @@
+<!--pages/more/more.wxml-->
+<list list="{{list}}" bind:handerItemSelected="handerItemSelected"></list>

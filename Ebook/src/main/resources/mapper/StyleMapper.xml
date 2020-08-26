@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.StyleDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.StyleEntity" >
+                <result column="style_id" property="styleId" />
+                <result column="book_id" property="bookId" />
+                <result column="style_name" property="styleName" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                style_id,
+                book_id,
+                style_name
+    </sql>
+	<select id="selectStyleByBookId" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from tb_logytj_xiaoshuo_style 
+		where book_id = #{bookId}
+		<if test="limit > 0">
+			limit #{limit}
+		</if>
+	</select>
+</mapper>

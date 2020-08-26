@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view class="search">    
+  <SearchInput>
+  </SearchInput>
+</view>
+<view class="tabs">
+  <Tabs tabs="{{tabs}}" bind:itemChange="handerItemChange">
+    <block>
+      <!--轮播图-->
+      <view class="carousel">
+         <swiper indicator-dots="true" indicator-color="rgba(0, 0, 0, .3)" indicator-active-color="#000000"  circular="{{true}}" interval="2000" autoplay="{{true}}"> 
+           <swiper-item wx:for="{{swiperList}}" wx:key="carouselId" wx:for-item="carousel">
+             <navigator url="{{'/pages/bookinfo/bookinfo?bookId='+carousel.bookId}}" open-type="navigate">
+               <image mode="widthFix" src="{{carousel.carouselImg}}"/>
+             </navigator>
+           </swiper-item>
+         </swiper>
+      </view>
+      <!--导航 -->
+      <view class="nav">
+          <navigator wx:for="{{navList}}" wx:key="id" url="{{item.url}}">
+              <image mode="widthFix" src="{{item.img}}" />
+          </navigator>
+      </view>
+      <!--首页内容 -->
+      <view class="content" wx:for="{{indexItem}}" wx:key="configName">
+          <view class="title">
+            <text class="title_name">{{item.configName}}</text>
+            <navigator open-type="navigate" url="{{'/pages/more/more?sex='+item.configSex+'&configType='+item.configType}}"><text class="more">查看更多>></text></navigator>
+          </view>
+          <view class="data">
+              <view class="data_list" wx:for="{{item.list}}" wx:for-index="index2" wx:for-item="in_item" wx:key="bookId">
+                <navigator url="{{'/pages/bookinfo/bookinfo?bookId='+in_item.bookId}}" open-type="navigate">
+                  <image mode="widthFix" src="{{in_item.bookImg}}" />
+                </navigator>
+                <view class="book_name">
+                <text >{{in_item.bookName}}</text>
+              </view>
+              </view>
+          </view>
+      </view>
+    </block>
+  </Tabs>
+</view>

@@ -1,0 +1,91 @@
+<!--pages/reader/reader.wxml-->
+<navbar home read tag text="{{navigationBarTitle}}"></navbar>
+
+<!-- 目录 -->
+<view style="display:{{select_chapter}}" class="selectChapter">
+    <view wx:for="{{chapterArr.list}}"  wx:key="bookContentId" class="arr" data-selectItem="{{item.bookContentId}}" bind:tap="select_chapter">
+      {{item.bookContentName}}
+    </view>
+    <view class="select_button">
+      <view class="pre" bind:tap="select_pre">上一页</view>
+      <view class="mi">{{chapterArr.currentPage}}/{{chapterArr.allPage}}</view>
+      <view class="next" bind:tap="select_next">下一页</view>
+    </view>
+</view>
+
+<!-- 页面 -->
+<view class="container" style="background:{{bodyColor}};padding-top:68px;padding-bottom:9px">
+  <!-- 顶层 -->
+  <view class="artical-action-top" style="top:{{navigationBarHeight}};" >{{chapter}}</view>
+  <!-- 中间层，点击，头部底部显示 -->
+  <view class="artical-action-mid" bindtap="midaction" bindtouchstart="touchStart" bindtouchend="touchEnd"
+      ></view>
+    <!-- 主体内容 -->
+    <scroll-view   class="m-read-content" style="height:{{windows.windowsHeight}}px" scroll-top="{{scroll_top}}px" scroll-y="true" scroll-with-animation="true" bindscroll="scrollContain" bindscrolltolower="bindscrolltolower">
+      <h4 hidden="{{pageIndex==1}}">{{chapter}}</h4>
+      <text decode="true" style="{{'line-height:'+initLineHeight+'px;'+'font-size:'+initFontSize+'px;'}}">\n&emsp;&emsp;{{Text}}</text>
+    </scroll-view>
+  <!-- 底层 -->
+  <view class="artical-action-bottom" >{{pageIndex}}/{{pageNum}}</view>
+</view>
+
+
+
+
+
+
+<!-- 字体调节 -->
+<view class="top-nav-pannel" style="display:{{ziti}}">
+  <view class="child-mod" style="padding-top:8px;">
+    <view class="todo" >字号</view>
+    <text style="padding-left:148rpx;"></text>
+    <text class="bk-container-addsub" bind:tap="bindSmall">小</text>
+    <text style="padding-left:25rpx;">{{initFontSize}}</text>
+    <text class="bk-container-addsub" style="margin-left:10px;" bindtap="bindBig">大</text>
+  </view>
+  <view class="child-mod">
+    <view class="todo" >行距</view>
+    <text style="padding-left:170rpx;"></text>
+    <text class="bk-container-addsub" bind:tap="bindSub">-</text>
+    <text style="padding-left:25rpx;">{{initLineHeight}}</text>
+    <text class="bk-container-addsub" style="margin-left:10px;" bindtap="bindAdd">+</text>
+  </view>
+  <view class="child-mod">
+    <view class="todo">背景</view>
+    <block wx:for="{{colorArr}}" wx:for-item="color" wx:key="this">
+      <view class="bk-container {{_num==index?'bk-container-current':''}}" data-num="{{index}}" style="background-color:{{color.value}}" bind:tap="bgChange"></view>
+    </block>
+  </view>
+  <view style="padding-left:152.34rpx;">
+    <block wx:for="{{colorArr}}" wx:for-item="color" wx:key="this">
+      <text class="bk-container-text">{{color.name}}</text>
+    </block>
+  </view>
+</view>
+
+<!-- 底部 -->
+<view class="bottom-nav" style="display:{{nav}}">
+  <view class="item menu-button"  bind:tap="chapteraction">
+    <view class="item-warp">
+      <view class="icon-menu"></view>
+      <view class="icon-text">目录</view>
+    </view>
+  </view>
+  <view class="item current" bind:tap="zitiaction">
+    <view class="item-warp">
+      <view class="icon-ft"></view>
+      <view class="icon-text">字体</view>
+    </view>
+  </view>
+  <view class="item" bind:tap="dayNight">
+    <view class="item-warp" wx:if="{{daynight}}">
+      <view class="icon-day"></view>
+      <view class="icon-text">白天</view>
+    </view>
+    <view class="item-warp" wx:else>
+      <view class="icon-night"></view>
+      <view class="icon-text">夜间</view>
+    </view>
+  </view>
+</view>
+

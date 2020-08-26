@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.BookContentDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.BookContent" >
+                <result column="book_id" property="bookId" />
+                <result column="book_content_id" property="bookContentId" />
+                <result column="book_content_path" property="bookContentPath" />
+                <result column="book_content_name" property="bookContentName" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                book_id,
+                book_content_id,
+                book_content_path,
+                book_content_name
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="book_id" keyProperty="bookId" parameterType="com.logytj.ebook.entity.BookContent">
+        INSERT INTO tb_logytj_xiaoshuo_book_content
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                        <if test ='null != bookId'>
+                        book_id,
+                        </if>
+                        <if test ='null != bookContentId'>
+                        book_content_id,
+                        </if>
+                        <if test ='null != bookContentPath'>
+                        book_content_path,
+                        </if>
+                        <if test="bookContentName != null">
+                        book_content_name,
+                        </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                        <if test ='null != bookId'>
+                        #{bookId},
+                        </if>
+                        <if test ='null != bookContentId'>
+                        #{bookContentId},
+                        </if>
+                        <if test ='null != bookContentPath'>
+                        #{bookContentPath},
+                        </if>
+                        <if test="bookContentName != null">
+                        #{bookContentName},
+                        </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" >
+        DELETE FROM tb_logytj_xiaoshuo_book_content
+        WHERE id = #{id}
+    </delete>
+    
+    <select id="selectBookContentByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
+    	select <include refid="Base_Column_List"/> from tb_logytj_xiaoshuo_book_content
+    	where book_content_id = #{bookContentId}
+    </select>
+	
+	<select id="selectBookContentMinId" parameterType="int" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from tb_logytj_xiaoshuo_book_content
+		where book_content_id = (
+		 	select min(book_content_id) from tb_logytj_xiaoshuo_book_content where book_id = #{bookId}
+		) and book_id = #{bookId}
+	</select>
+	
+	<select id="selectBookContentMaxId" parameterType="int" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from tb_logytj_xiaoshuo_book_content
+		where book_content_id = (
+		 	select max(book_content_id) from tb_logytj_xiaoshuo_book_content where book_id = #{bookId}
+		) and book_id = #{bookId}
+	</select>
+	
+	<select id="selectBookContentPage" parameterType="map" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+			from tb_logytj_xiaoshuo_book_content
+					where  book_id = #{bookId}
+			<if test="start != null and limit != null">
+				limit #{start},#{limit}
+			</if>
+	</select>
+	
+	<select id="selectBookContentAll" parameterType="map" resultType="int">
+		select count(*) from tb_logytj_xiaoshuo_book_content where  book_id = #{bookId}
+	</select>
+</mapper>

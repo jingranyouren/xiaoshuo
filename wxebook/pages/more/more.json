@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "list":"../../Compoments/list/list"
+  },
+  "navigationBarTitleText": "查看更多"
+}

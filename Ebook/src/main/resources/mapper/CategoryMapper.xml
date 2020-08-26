@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.CategoryDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.CategoryEntity" >
+                <id column="categoty_id" property="categoryId"/>
+                <result column="root_id" property="rootId" />
+                <result column="category_name" property="categoryName" />
+                <result column="rank" property="rank" />
+                <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                root_id,
+                categoty_id,
+                category_name,
+                rank,
+                is_deleted
+    </sql>
+	
+	<select id="selectCategoryBySelective" parameterType="com.logytj.ebook.entity.CategoryEntity"
+	resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from tb_logytj_xiaoshuo_category
+		<where>
+			<if test="rootId == 0 or rootId == 1">
+				and root_id = #{rootId}
+			</if>
+			<if test="1 == 1">
+				and is_deleted = 0
+			</if>
+		</where>
+		order by rank
+	</select>
+	
+	<select id="selectCategoryByRootId" parameterType="int" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> 
+			from tb_logytj_xiaoshuo_category
+				where root_id = #{rootId} 
+					order by rank
+	</select>
+</mapper>

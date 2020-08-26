@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logytj.ebook.dao.BookDao">
+
+    <resultMap id="BaseResultMap" type="com.logytj.ebook.entity.BookEntity" >
+                <result column="book_id" property="bookId" />
+                <result column="book_name" property="bookName" />
+                <result column="book_img" property="bookImg" />
+                <result column="author" property="author" />
+                <result column="word_num" property="wordNum" />
+                <result column="update_status" property="updateStatus" />
+                <result column="intro" property="intro" />
+                <result column="book_file_path" property="bookFilePath" />
+                <result column="free_status" property="freeStatus" />
+                <result column="free_start_time" property="freeStartTime" />
+                <result column="free_end_time" property="freeEndTime" />
+                <result column="categoty_id" property="categotyId" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                book_id,
+                book_name,
+                book_img,
+                author,
+                word_num,
+                update_status,
+                intro,
+                book_file_path,
+                free_status,
+                free_start_time,
+                free_end_time,
+                categoty_id
+    </sql>
+
+    <insert id="insertSelective" useGeneratedKeys="true" keyColumn="book_id" keyProperty="bookId" parameterType="com.logytj.ebook.entity.BookEntity">
+        INSERT INTO tb_logytj_xiaoshuo_book
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                        <if test ='null != bookId'>
+                        book_id,
+                        </if>
+                        <if test ='null != bookName'>
+                        book_name,
+                        </if>
+                        <if test ='null != bookImg'>
+                        book_img,
+                        </if>
+                        <if test ='null != author'>
+                        author,
+                        </if>
+                        <if test ='null != wordNum'>
+                        word_num,
+                        </if>
+                        <if test ='null != updateStatus'>
+                        update_status,
+                        </if>
+                        <if test ='null != intro'>
+                        intro,
+                        </if>
+                        <if test ='null != bookFilePath'>
+                        book_file_path,
+                        </if>
+                        <if test ='null != freeStatus'>
+                        free_status,
+                        </if>
+                        <if test ='null != freeStartTime'>
+                        free_start_time,
+                        </if>
+                        <if test ='null != freeEndTime'>
+                        free_end_time,
+                        </if>
+                        <if test ='null != categotyId'>
+                        categoty_id
+                        </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                        <if test ='null != bookId'>
+                        #{bookId},
+                        </if>
+                        <if test ='null != bookName'>
+                        #{bookName},
+                        </if>
+                        <if test ='null != bookImg'>
+                        #{bookImg},
+                        </if>
+                        <if test ='null != author'>
+                        #{author},
+                        </if>
+                        <if test ='null != wordNum'>
+                        #{wordNum},
+                        </if>
+                        <if test ='null != updateStatus'>
+                        #{updateStatus},
+                        </if>
+                        <if test ='null != intro'>
+                        #{intro},
+                        </if>
+                        <if test ='null != bookFilePath'>
+                        #{bookFilePath},
+                        </if>
+                        <if test ='null != freeStatus'>
+                        #{freeStatus},
+                        </if>
+                        <if test ='null != freeStartTime'>
+                        #{freeStartTime},
+                        </if>
+                        <if test ='null != freeEndTime'>
+                        #{freeEndTime},
+                        </if>
+                        <if test ='null != categotyId'>
+                        #{categotyId}
+                        </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateSelective" parameterType="com.logytj.ebook.entity.BookEntity">
+        UPDATE tb_logytj_xiaoshuo_book
+        <set>
+                    <if test ='null != bookId'>book_id = #{bookId},</if>
+                    <if test ='null != bookName'>book_name = #{bookName},</if>
+                    <if test ='null != bookImg'>book_img = #{bookImg},</if>
+                    <if test ='null != author'>author = #{author},</if>
+                    <if test ='null != wordNum'>word_num = #{wordNum},</if>
+                    <if test ='null != updateStatus'>update_status = #{updateStatus},</if>
+                    <if test ='null != intro'>intro = #{intro},</if>
+                    <if test ='null != bookFilePath'>book_file_path = #{bookFilePath},</if>
+                    <if test ='null != freeStatus'>free_status = #{freeStatus},</if>
+                    <if test ='null != freeStartTime'>free_start_time = #{freeStartTime},</if>
+                    <if test ='null != freeEndTime'>free_end_time = #{freeEndTime},</if>
+                    <if test ='null != categotyId'>categoty_id = #{categotyId}</if>
+        </set>
+        WHERE book_id = #{bookId}
+    </update>
+
+	<select id="selectBookByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+			from tb_logytj_xiaoshuo_book
+				where book_id = #{bookId}
+	</select>
+	
+	<!-- 数据量少，这里就不分页了。 -->
+	<select id="selectBookSelective"  resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+			from tb_logytj_xiaoshuo_book
+			<where>
+				<if test="list != null and list.size() != 0">
+					and categoty_id  in 
+					<foreach collection="list" item="item" open="(" close = ")" separator=",">
+						#{item.categoryId}
+					</foreach>
+				</if>
+				<if test="book.updateStatus == 0 or book.updateStatus == 1">
+					and update_status = #{book.updateStatus}
+				</if>
+				<if test="book.freeStatus > -1">
+				 	and free_status = #{book.freeStatus}
+				</if>
+			</where>
+	</select>
+	
+	<select id="selectBooKByFreeStatus" parameterType="int" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> 
+			from tb_logytj_xiaoshuo_book
+				where free_status = #{freeStatus} 
+	</select>
+	
+	<select id="selectBookByupdateStatus" parameterType="int" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> 
+			from tb_logytj_xiaoshuo_book
+				where update_status = #{updataStatus} 
+	</select>
+	
+	<select id="selectBookByKeyword"  resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+			from tb_logytj_xiaoshuo_book
+				<where>
+					<if test="keyword != null and keyword != ''">
+						and book_name like concat('%',#{keyword},'%') or intro like concat('%',#{keyword},'%')
+					</if>
+				</where>
+	</select>
+</mapper>
