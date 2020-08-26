@@ -33,7 +33,7 @@
 			limit 1
 	</select>
 	
-	<insert id="insertBySelective" parameteType="com.logytj.ebook.entity.ReadNotesEntity">
+	<insert id="insertBySelective" parameterType="com.logytj.ebook.entity.ReadNotesEntity">
 		insert into read_notes
 			<trim prefix="(" suffix=")" suffixOverrides=",">
 				<if test="userId != null">
@@ -65,7 +65,7 @@
 			</trim>
 	</insert>
 	
-	<update id="updateLast" parameteType="com.logytj.ebook.entity.ReadNotesEntity">
+	<update id="updateLast" parameterType="com.logytj.ebook.entity.ReadNotesEntity">
 		update read_notes set last_read_time = #{lastReadTime}, 
 						last_read_content_id = #{lastReadContentId}
 					where user_id = #{userId} and book_id = #{bookId}
