@@ -4,4 +4,10 @@
 	使用微信原生框架mina作为前端技术开发。<br/>
 	未做小说的后台管理系统<br/>
 3.效果预览<br/>
-![](https://github.com/jingranyouren/img/blob/master/index.png)
+![](https://github.com/jingranyouren/img/blob/master/index.png)<br/>
+![](https://github.com/jingranyouren/img/blob/master/shelt.png)<br/>
+![](https://github.com/jingranyouren/img/blob/master/readhistory.png)<br/>
+![](https://github.com/jingranyouren/img/blob/master/search.png)<br/>
+![](https://github.com/jingranyouren/img/blob/master/my.png)<br/>
+![](https://github.com/jingranyouren/img/blob/master/category.png)<br/>
+
